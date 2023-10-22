@@ -6,5 +6,15 @@ def index(request):
     city= 'Tehran'
 
     r= requests.get(url.format(city)).json()
-    #print(r)
-    return render(request, 'template.html')
+    #print(r.text)
+    
+    city_weather= {
+        'city': city,
+        'temp': r['main']['temp'],
+        'desc': r['weather'][0]['description'],
+        'icon': r['weather'][0]['icon'],
+    }
+
+    print(city_weather)
+
+    return render(request, 'template.html', {'city_weather': city_weather})

@@ -42,17 +42,18 @@ button{
 
 #weather{
     display: flex;
-    justify-content: center ;
+    justify-content: space-around ;
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 4fr;
     width: 40%;
-    height: 100px;
+    height: 110px;
     text-align: center;
     margin-left: 30%;
     margin-top: 50px;
     column-gap: 0;
     border: 2px solid grey;
+    padding: 10px;
 }
 img{
    margin-left: 8px;
@@ -61,16 +62,21 @@ img{
     border-radius: 50%;
 }
 
-h2{
+h4{
     font-weight: 700;
-    font-size: 30px;
-    margin-top: 0;
+    font-size: 40px;
+    margin: 0;
+    margin-bottom: 8px;
 }
 
 p{
-    font-size: 13px;
+    font-size: 16px;
     color: rgb(90, 90, 90);
     margin: 0;
+}
+#a{
+    margin-bottom: 8px;
+    
 }
 #city{
     height: 100%;
@@ -88,11 +94,11 @@ p{
     </div>
 
     <div id="weather">
-        <img src="matrix.jpg" alt="weathet">
+        <img src="https://openweathermap.org/img/wn/{{ city_weather.icon }}.png" alt="weather">
      <div id="city">
-        <h4>Las Vegas</h4>
-        <p>29 C</p>
-        <p>it's ok</p>
+        <h4> {{ city_weather.city }} </h4>
+        <p>{{ city_weather.temp }}</p>
+        <p id="a">{{ city_weather.desc }}</p>
     </div>
     </div>
 
