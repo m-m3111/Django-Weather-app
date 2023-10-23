@@ -38,6 +38,7 @@ button{
     color: white;
     border: none;
     margin: 0;
+    cursor: pointer;
 }
 
 #weather{
@@ -87,20 +88,23 @@ p{
     <nav >
         How's the weather now??
     </nav>
-
+    <form method="POST">
+        {% csrf_token %}
     <div id="search">
-        <input type="search" placeholder="city" >
-        <button>add city</button>
+        {{ form.name }}
+        <button type="submit">add city</button>
+    </form>
     </div>
-
+    {% for city in data reversed %}
     <div id="weather">
-        <img src="https://openweathermap.org/img/wn/{{ city_weather.icon }}.png" alt="weather">
+        <img src="https://openweathermap.org/img/wn/{{ city.icon }}.png" alt="weather">
      <div id="city">
-        <h4> {{ city_weather.city }} </h4>
-        <p>{{ city_weather.temp }}</p>
-        <p id="a">{{ city_weather.desc }}</p>
+        <h4> {{ city.city }} </h4>
+        <p>{{ city.temp }}</p>
+        <p id="a">{{ city.desc }}</p>
     </div>
     </div>
+    {% endfor %}
 
 
     
